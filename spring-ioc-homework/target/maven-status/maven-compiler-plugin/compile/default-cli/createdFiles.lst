@@ -1,0 +1,7 @@
+com\bjpowernode\service\impl\UserServiceImpl.class
+com\bjpowernode\service\UserService.class
+com\bjpowernode\dao\impl\UserDaoImpl.class
+com\bjpowernode\dao\impl\UserDaoOracleImpl.class
+com\bjpowernode\MyApp.class
+com\bjpowernode\dao\UserDao.class
+com\bjpowernode\domain\SysUser.class

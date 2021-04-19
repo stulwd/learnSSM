@@ -1,0 +1,1 @@
+java动态代理：jdk自动代理和aspectj代理

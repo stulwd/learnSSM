@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- settings 控制mybatis全局行为 -->
+  <settings>
+    <!-- 设置mybatis输出日志 -->
+    <setting name = "logImpl" value = "STDOUT_LOGGING" />
+  </settings>
+  <!-- 
+      环境配置：数据库的连接信息
+      default：必须和子标签某一个environment的id一致
+      告诉mybatis使用哪个数据库的连接信息。也就是访问哪个数据库
+   -->
+  <environments default="mydev">
+    <!-- 
+        一个数据库信息的配置，id 唯一值，自定义，表示环境名称
+     -->
+    <environment id="mydev">
+      <!-- 
+          transactionManager: mybatis的事务类型
+          type：JDBC表示使用jdbc中的connection对象的commit，rollback做事务处理
+       -->
+      <transactionManager type="JDBC"/>
+      <!-- 
+          数据源，type：pooled表示使用连接池
+       -->
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mysql"/>
+        <property name="username" value="root"/>
+        <property name="password" value="1800435836lwd"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/lwdHouse/dao/StudentDao.xml"/>
+  </mappers>
+
+
+</configuration>

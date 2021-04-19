@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 按照类型自动注入 -->
+    <bean id="myStudent" class="com.bjpowernode.ba05.Student" autowire="byType">
+        <property name="name" value="李四"/>
+        <property name="age" value="20"/>
+        <!-- <property name="school" ref="mySchool"/> -->
+    </bean>
+    <!-- id可以和参数名不一样, 但是同类型的bean智能出现一次 -->
+    <!-- <bean id="mySchool" class="com.bjpowernode.ba05.School">
+        <property name="name" value="polyU"/>
+        <property name="address" value="hongkan"/>
+    </bean> -->
+
+    <bean id="prim" class="com.bjpowernode.ba05.PrimarySchool">
+        <property name="name" value="polyU"/>
+        <property name="address" value="hongkan"/>
+    </bean>
+    
+</beans>

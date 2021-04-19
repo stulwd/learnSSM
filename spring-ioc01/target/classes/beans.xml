@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="someService" class="com.bjpowernode.service.impl.SomeServiceImpl"/>
+    <bean id="someService1" class="com.bjpowernode.service.impl.SomeServiceImpl"/>
+    <!-- 
+        scope="prototype" 每次调用getBean都会获取一个新的对象
+     -->
+    <bean id="someService2" class="com.bjpowernode.service.impl.SomeServiceImpl" scope="prototype"/>
+    <bean id="mydate" class="java.util.Date"/>
+</beans>

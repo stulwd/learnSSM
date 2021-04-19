@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myStudent" class="com.bjpowernode.ba03.Student">
+        <!-- 这种方法是set注入 -->
+        <!-- <property name="name" value="李四"/>
+        <property name="age" value="20"/>
+        <property name="school" ref="mySchool"/> -->
+        <!-- 这种是构造注入，即直接调用带参数构造方法 -->
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="age" value="20"/>
+        <constructor-arg name="school" ref="mySchool"/>
+    </bean>
+    <bean id="myStudent1" class="com.bjpowernode.ba03.Student">
+        <constructor-arg index="0" value="张三"/>
+        <constructor-arg index="1" value="20"/>
+        <constructor-arg index="2" ref="mySchool"/>
+    </bean>    
+    <bean id="myStudent2" class="com.bjpowernode.ba03.Student">
+        <constructor-arg value="张三"/>
+        <constructor-arg value="20"/>
+        <constructor-arg ref="mySchool"/>
+    </bean>
+    <bean id="mySchool" class="com.bjpowernode.ba03.School">
+        <property name="name" value="polyU"/>
+        <property name="address" value="hongkan"/>
+    </bean>
+    
+    <bean id="myFile" class="java.io.File">
+        <constructor-arg value="C:\Users\wendi\Desktop\spring\spring-framework-study\spring-di02\src\main\resources\ba03\applicationContext.xml"/>
+    </bean>
+
+</beans>
