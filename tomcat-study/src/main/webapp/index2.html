@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    这是web下的index2.html<br/>
+    <a href="a/b/c.html">a/b/c.html</a><br/>
+    <a href="http://localhost:8088/helloWeb/hello9">请求转发：a/b/c.html</a>
+<!--跳过去跳不回来，是因为第二个采用了请求转发的方式，当页面回显了c.html的内容时，由于请求转发地址不变的特点
+地址栏中地址还是http://localhost:8088/helloWeb/hello9
+所以，当点击调回首页，地址栏地址拼接上../../index2.html链接，最终要访问http://localhost:8088/index2.html
+显然是不存在的。
+解决办法：在c.html文件的head标签里添加base标签，表示当前的路径-->
+    <br>
+    <a href="/">斜杠</a>
+<!--斜杠如果被浏览器解析，得到的地址是http://ip:port/-->
+<!--http://localhost:8088/-->
+
+<!--斜杠如果被服务器解析，得到的地址是http://ip:port/工程名-->
+<!--例如：-->
+<!--<url-pattern>/servlet1</url-pattern>-->
+<!--实际的路径是http://ip:port/工程名/servlet1-->
+
+<!--特殊情况-->
+<!--response.sendRedirect(”/“)-->
+<!--此命令是把/发送给了浏览器，得到http://ip:port/-->
+</body>
+</html>

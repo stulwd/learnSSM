@@ -6,6 +6,7 @@
   <!-- <select id="selectBlog" resultType="Blog">
     select * from Blog where id = #{id}
   </select> -->
+
   <select id="selectStudents" resultType="com.lwdHouse.domain.Student">
     select id,name,age,sex from student order by id
   </select>
@@ -42,5 +43,58 @@
   <select id="selectMultiPosition" resultType="com.lwdHouse.domain.Student">
     select id,name,age,sex from student where
     name=#{arg0} and age=#{arg1}
+  </select>
+
+  <select id="selectMultiByMap" resultType="com.lwdHouse.domain.Student">
+    select id,name,age,sex from student where
+    name=#{name} and age=#{age}
+  </select>
+
+  <select id="selectStudentsBy$" resultType="com.lwdHouse.domain.Student">
+    select id,name,age,sex from student where name=${alias}
+  </select>
+
+  <!--  必须使用$的情况-->
+  <select id="selectStudentByOrder" resultType="Student">
+    select * from student order by ${colum}
+  </select>
+
+  <select id="selectStudentReturnViewStudent" resultType="ViewStudent">
+    select id, name from student where id=#{sid}
+  </select>
+
+  <select id="countStudent" resultType="Integer">
+    select count(*) from student
+  </select>
+  
+  <select id="selectStudentReturnMap" resultType="java.util.HashMap">
+    select * from student where id=#{sid}
+  </select>
+  
+  <resultMap id="resMap" type="com.lwdHouse.domain.Student">
+    <id column="id" property="id"></id>
+    <result column="name" property="sex"/>
+    <result column="sex" property="name"/>
+    <result column="age" property="age"/>
+  </resultMap>
+  <select id="selectAllStudents" resultMap="resMap">
+    select * from student
+  </select>
+
+  <resultMap id="student2IdCardMap" type="com.lwdHouse.domain.IdCard">
+    <id     column="id"   property="account"/>
+    <result column="name" property="name"/>
+    <result column="sex"  property="gender"/>
+  </resultMap>
+  <select id="selectAllIdCards" resultMap="student2IdCardMap">
+    select * from student
+  </select>
+
+  <select id="selectAllIdCards2" resultType="com.lwdHouse.domain.IdCard">
+    select id as account, name as name, sex as gender from student
+  </select>
+  
+  <select id="slectLikeName" resultType="com.lwdHouse.domain.Student">
+    select id, name, age, sex from student where name like "%" #{name} "%"
   </select>
 </mapper>

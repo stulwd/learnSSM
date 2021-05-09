@@ -3,11 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+  <properties resource="jdbc.properties"/>
   <!-- settings 控制mybatis全局行为 -->
   <settings>
     <!-- 设置mybatis输出日志 -->
     <setting name = "logImpl" value = "STDOUT_LOGGING" />
   </settings>
+
+
+  <typeAliases>
+<!--    <typeAlias type="com.lwdHouse.domain.Student" alias="stu"/>-->
+<!--    <typeAlias type="com.lwdHouse.vo.ViewStudent" alias="vstu"/>-->
+    <package name="com.lwdHouse.domain"/>
+    <package name="com.lwdHouse.vo"/>
+    <!-- package方法缺点：
+          如果两个package下存在同名类，则会报：
+          The alias 'Student' is already mapped to the value 'com.lwdHouse.domain.Student' -->
+  </typeAliases>
+
+  <plugins>
+    <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+  </plugins>
   <!-- 
       环境配置：数据库的连接信息
       default：必须和子标签某一个environment的id一致
@@ -20,22 +37,28 @@
     <environment id="mydev">
       <!-- 
           transactionManager: mybatis的事务类型
-          type：JDBC表示使用jdbc中的connection对象的commit，rollback做事务处理
+          type：事务的处理的类型
+            1. JDBC: 表示mybatis的底层使用jdbc中的connection对象的commit，rollback做事务处理
+            2. MANAGED: 把mybatis的事务处理委托给其他的容器（一个服务器软件，一个框架（spring））
        -->
       <transactionManager type="JDBC"/>
       <!-- 
-          数据源，type：pooled表示使用连接池
+          数据源：在java体系中，实现了javax.sql.DataSource接口的都是数据源
+                数据源时表示connection对象的
+                type：pooled表示使用mybatis连接池:PooledDataSource
        -->
       <dataSource type="POOLED">
-        <property name="driver" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/mysql"/>
-        <property name="username" value="root"/>
-        <property name="password" value="1800435836lwd"/>
+        <property name="url"      value="${jdbc.url}"/>
+        <property name="driver"   value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
       </dataSource>
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/lwdHouse/dao/StudentDao.xml"/>
+<!--    <mapper resource="com/lwdHouse/dao/StudentDao.xml"/>-->
+<!--    <mapper resource="com/lwdHouse/dao/StudentDynamicDao.xml"/>-->
+    <package name="com.lwdHouse.dao"/>
   </mappers>
 
 

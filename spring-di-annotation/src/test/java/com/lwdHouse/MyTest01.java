@@ -11,6 +11,12 @@ public class MyTest01 {
     public void test01() {
         String config = "applicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
+        System.out.println(ac.getBeanDefinitionCount());
+        String[] beans = ac.getBeanDefinitionNames();
+        for (String bean :
+                beans) {
+            System.out.println("bean name:" + bean);
+        }
         Student student = (Student) ac.getBean("student");
         System.out.println("student="+student);
     }

@@ -18,19 +18,19 @@ public class MyTest {
         /**
          * jdk动态代理，jdk动态代理实际代理的是接口类
          */
-        // SomeService target = new SomeServiceImpl();
-        // InvocationHandler handler = new MyInvocationHandler(target);
-        // // for (Class cla : target.getClass().getInterfaces()) {
-        // //     System.out.println(cla);
-        // // }
-        // // System.out.println(target.getClass().getInterfaces());
-        // // System.out.println(target.getClass().getClassLoader());
-        // SomeService serviceProxy = (SomeService) Proxy.newProxyInstance(target.getClass().getClassLoader(), 
-        //                                             target.getClass().getInterfaces(), 
-        //                                             handler);
-        // System.out.println("proxy:"+serviceProxy.getClass());                                
-        // serviceProxy.doSome("liuwendi", 24);
-        // serviceProxy.doOther("liuwendi", 24);
+//         SomeService target = new SomeServiceImpl();
+//         InvocationHandler handler = new MyInvocationHandler(target);
+//         // for (Class cla : target.getClass().getInterfaces()) {
+//         //     System.out.println(cla);
+//         // }
+//         // System.out.println(target.getClass().getInterfaces());
+//         // System.out.println(target.getClass().getClassLoader());
+//         SomeService serviceProxy = (SomeService) Proxy.newProxyInstance(target.getClass().getClassLoader(),
+//                                                     target.getClass().getInterfaces(),
+//                                                     handler);
+//         System.out.println("proxy:"+serviceProxy.getClass());
+//         serviceProxy.doSome("liuwendi", 24);
+//         serviceProxy.doOther("liuwendi", 24);
 
 
 
@@ -39,10 +39,11 @@ public class MyTest {
         /**
          * aspectj-aop方式
          */
-        // String config = "applicationContext.xml";
-        // ApplicationContext ac = new ClassPathXmlApplicationContext(config);
-        // SomeService proxy = (SomeService) ac.getBean("someService");
-        // System.out.println("proxy:"+proxy.getClass());
+//
+//         String config = "applicationContext.xml";
+//         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
+//         SomeService proxy = (SomeService) ac.getBean("someService");
+//         System.out.println("proxy:"+proxy.getClass());
         // 切入点表达式匹配到了就会是代理类：proxy:class com.sun.proxy.$Proxy15
         // 切入点表达式没有匹配到就是原有类：proxy:class com.lwdHouse.SomeServiceImpl
 
@@ -57,7 +58,7 @@ public class MyTest {
         // @Around
         // String doFirst = proxy.doFirst("liuwendi", 18);
         // @AfterThrowing @After
-        // proxy.doSecond(0);    
+        // proxy.doSecond(0);
  
 
 
@@ -76,7 +77,7 @@ public class MyTest {
         String config = "applicationContext.xml";
         ApplicationContext ac = new ClassPathXmlApplicationContext(config);
         // 如果使用cglib代理，返回的bean就是SomeServiceImpl类型，所以返回值可以转换为SomeServiceImpl或者接口类型
-        SomeServiceImpl proxy = (SomeServiceImpl) ac.getBean("someService");
+        SomeService proxy = (SomeService) ac.getBean("someService");
         // 如果使用jdk代理，返回的bean不能赋给SomeServiceImpl类型，只能赋值给接口类型
         // SomeService proxy = (SomeService) ac.getBean("someService");
         System.out.println("proxy:"+proxy.getClass());

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 // component相当与<bean>
 // @Component(value = "myStudent")
 // @Component("myStudent")  //可以省略value
@@ -35,7 +35,7 @@ public class Student {
 
     // @Resource自动注入 (必须使用java的较高版本)
     // 先使用byName自动注入，如果注入失败，则使用byType
-    @Resource
+//    @Resource
     private School school;
     // 如果要求只使用byName，则@Resource(name = "xxx")
     // @Resource(name = "")

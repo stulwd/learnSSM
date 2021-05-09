@@ -8,4 +8,6 @@
         <property name="name" value="李四"/>
         <property name="age" value="20"/>
     </bean>
+
+    <bean id="mydate" class="java.util.Date"></bean>
 </beans>

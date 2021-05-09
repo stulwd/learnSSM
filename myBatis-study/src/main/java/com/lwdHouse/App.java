@@ -25,10 +25,10 @@ public class App
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         SqlSessionFactory factory = builder.build(in);
         SqlSession sqlSession = factory.openSession();
+//         自动提交打开，则不需要执行sqlSession.commit()进行手动提交
+        // SqlSession sqlSession = factory.openSession(true);
         // 一般把上面的几行封装到mybatisUtils工具类里面，这里直接获取sqlSession即可
         // SqlSession sqlSession = MybatisUtils.getSqlSession();
-        // 自动提交打开，则不需要执行sqlSession.commit()进行手动提交
-        // SqlSession sqlSession = factory.openSession(true);
         String sqlId = "com.lwdHouse.dao.StudentDao." + "selectStudents";
         List<Student> studentList = sqlSession.selectList(sqlId);
         studentList.forEach(stu -> System.out.println(stu));
