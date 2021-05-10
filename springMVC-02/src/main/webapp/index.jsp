@@ -16,5 +16,14 @@
     </form>
     <br/>
     <img src="images/p1.jpg" alt="我是一个静态资源，不能显示">
+
+    <p>模拟跳转失败</p>
+    <br/>
+    <form action="a/b/c/d/some2" method="post">
+        姓名:<input type="text" name="name"><br>
+        年龄:<input type="text" name="age"><br>
+        <input type="submit" value="提交参数">
+    </form>
+    <br/>
 </body>
 </html>
