@@ -18,4 +18,14 @@ public class MyController {
 
         return mv;
     }
+
+    @RequestMapping("/a/b/c/d/some2")
+    public ModelAndView doSome2(Student student){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("myName",student.getName());
+        mv.addObject("myAge", student.getAge());
+        mv.setViewName("show2");
+
+        return mv;
+    }
 }
